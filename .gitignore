@@ -141,4 +141,4 @@ dmypy.json
 Thumbs.db
 
 # Optional: If you generate QR codes locally and don't want to commit them
-# qrcodes/
+qrcodes/
