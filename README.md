@@ -111,12 +111,29 @@ This system allows for registering vehicle owners and their vehicles, generating
 
 ## Running the Application
 
+**Run using Uvicorn (Standard Method):**
 1.  Make sure you are in the project root directory and your virtual environment is activated.
 2.  Start the Uvicorn server:
     ```bash
     uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
     ```
 3.  Open your web browser and navigate to `http://127.0.0.1:8000`.
+
+**Run using Clickable Scripts (Alternative):**
+* For MacOS
+1. Modify the code in the file named `start_parking_app.sh` in your project root directory and set the venv path to the venv you created.
+2. Make the script executable (run this *once* in your terminal from the project root):
+        ```bash
+        chmod +x start_parking_app.sh
+        ```
+3. Run the script from the terminal (`./start_parking_app.sh`) or by double-clicking it in Finder.
+4. Open your web browser and navigate to `http://127.0.0.1:8000`.
+
+* For Windows
+1. Modify the code in the file named `start_parking_app.bat` in your project root directory and set the venv path to the venv you created.
+2. Run the script by double-clicking the `start_parking_app.bat` file.
+3. Open your web browser and navigate to `http://127.0.0.1:8000`.
+
 
 ## Usage Workflow
 
