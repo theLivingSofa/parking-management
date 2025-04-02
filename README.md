@@ -69,8 +69,8 @@ parking_management_system/
 
 1.  **Clone the Repository:**
     ```bash
-    git clone <https://github.com/theLivingSofa/parking-management>
-    cd parking_management_system
+    git clone https://github.com/theLivingSofa/parking-management.git
+    cd parking-management
     ```
 
 2.  **Prerequisites:**
