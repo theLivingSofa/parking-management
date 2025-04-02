@@ -38,32 +38,8 @@ This system allows for registering vehicle owners and their vehicles, generating
 
 ## Project Structure
 
-parking_management_system/
-│
-├── app/                      # Main application source code
-│   ├── init.py
-│   ├── main.py               # FastAPI app, API routes
-│   ├── crud.py               # Database CRUD functions
-│   ├── database.py           # DB connection, session, table creation helper
-│   ├── models.py             # SQLAlchemy ORM models
-│   ├── schemas.py            # Pydantic data schemas
-│   ├── config.py             # Configuration loading
-│   └── qr_code.py            # QR code generation logic
-│
-├── static/                   # Static files (CSS, JS)
-│   ├── style.css
-│   ├── qr-scanner.js         # QR Scanner helper JS
-│   └── script.js             # Main frontend JS logic
-│   └── html5-qrcode.min.js   # (Recommended) Local copy of QR library
-│
-├── templates/                # HTML templates
-│   └── index.html
-│
-├── qrcodes/                  # Stores generated QR code PNG images (Create this dir)
-│
-├── .env                      # Environment variables (DB URL, rate) - IMPORTANT: Add to .gitignore!
-├── .gitignore                # Specifies intentionally untracked files
-└── requirements.txt          # Python dependencies list
+<img width="576" alt="image" src="https://github.com/user-attachments/assets/b31c1343-4295-4220-ad26-99773fc00197" />
+
 
 ## Setup and Installation
 
