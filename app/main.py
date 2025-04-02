@@ -2,16 +2,14 @@
 
 import os
 from fastapi import FastAPI, Depends, HTTPException, Request, status
-# ... other imports ...
 from sqlalchemy.orm import Session
 from typing import List
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-# Also likely needed:
 from fastapi import FastAPI, Depends, HTTPException, Request, status
 from fastapi.staticfiles import StaticFiles
-# ... other imports ...
+
 
 from app import crud, models, schemas, database, config
 # ... keep app setup, middleware, static files, templates, startup event ...
