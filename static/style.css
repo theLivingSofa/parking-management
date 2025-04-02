@@ -1,0 +1,142 @@
+/* static/style.css */
+
+
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+
+
+label {
+    display: block;
+    margin-top: 10px; /* Space above label */
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(80% - 22px); /* Adjust width */
+    max-width: 300px; /* Max width */
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #5cb85c; /* Green */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+    margin-left: 5px; /* Space next to inputs if needed */
+}
+
+button:hover {
+    background-color: #4cae4c; /* Darker green */
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+
+
+.status {
+    margin-top: 15px;
+    font-weight: bold;
+    min-height: 1.2em;
+    color: #555;
+}
+
+.status.success { color: green; }
+.status.error { color: red; }
+
+#reg-qr-result img {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+}
+#reg-qr-result a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #337ab7;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+#reg-qr-result a:hover {
+    background-color: #286090;
+}
+
+
+/* Scanner placeholder styling */
+#checkin-scanner-region, #checkout-scanner-region {
+    border: 1px dashed #ccc;
+    min-height: 150px; /* Give it some height */
+    margin-bottom: 10px;
+    background-color: #f0f0f0; /* Light background */
+    position: relative; /* Needed for potential overlays */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+}
+#checkin-scanner-region::before, #checkout-scanner-region::before {
+     content: "QR Scanner Area"; /* Placeholder text */
+     position: absolute;
+}
+
+/* Parking Lot styles remain the same */
+/* static/style.css */
+
+/* ... (keep previous styles for body, h1, h2, buttons, inputs, status, hr) ... */
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 20px; background-color: #f4f4f4; color: #333;}
+h1, h2 { color: #333; text-align: center; margin-bottom: 1em; }
+hr { border: none; border-top: 1px solid #eee; margin: 30px 0; }
+button { padding: 10px 15px; background-color: #5cb85c; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; transition: background-color 0.2s ease; margin-left: 5px; vertical-align: middle; /* Align buttons better */}
+button:hover { background-color: #4cae4c; }
+input[type="text"] { padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(80% - 22px); max-width: 300px; box-sizing: border-box; vertical-align: middle; /* Align inputs */ }
+label { display: inline-block; /* Adjust label display */ margin-bottom: 5px; font-weight: bold; color: #555; min-width: 100px; /* Give labels some width */ text-align: right; margin-right: 10px; vertical-align: middle;}
+.status { margin-top: 15px; font-weight: bold; min-height: 1.2em; color: #555; text-align: center; /* Center status */ }
+.status.success { color: green; } .status.error { color: red; }
+
+.control-box {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* Removed text-align: center; - Let content align naturally or use specific alignment */
+}
+/* Style input groups */
+.control-box div { margin-bottom: 10px; } /* Add space below input/label pairs */
+.control-box br { display: none; } /* Hide explicit breaks if using divs/labels */
+
+
+/* ... (keep styles for #reg-qr-result, scanner regions) ... */
+#reg-qr-result img { margin-top: 10px; border: 1px solid #ccc; } #reg-qr-result a { display: inline-block; margin-top: 10px; padding: 8px 12px; background-color: #337ab7; color: white; text-decoration: none; border-radius: 4px; } #reg-qr-result a:hover { background-color: #286090; }
+#checkin-scanner-region, #checkout-scanner-region { border: 1px dashed #ccc; min-height: 150px; margin-bottom: 10px; background-color: #f0f0f0; position: relative; display: flex; align-items: center; justify-content: center; color: #888; } #checkin-scanner-region::before, #checkout-scanner-region::before { content: "QR Scanner Area"; position: absolute; }
+
+
+/* ... (keep styles for parking-lot and spot display, including .spot-owner) ... */
+.parking-lot { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Slightly wider spots */ gap: 15px; margin-top: 20px; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.spot { border: 2px solid grey; border-radius: 8px; padding: 15px; text-align: center; min-height: 140px; /* Slightly taller */ display: flex; flex-direction: column; justify-content: space-between; background-color: #f9f9f9; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.spot:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.spot.available { border-color: #5cb85c; background-color: #e8f5e9;}
+.spot.occupied { border-color: #d9534f; background-color: #ffebee;}
+.spot-number { font-weight: bold; font-size: 1.4em; color: #333; }
+.spot-status { font-style: italic; font-size: 0.9em; margin-bottom: 5px; }
+.spot-plate { font-size: 0.95em; color: #555; word-break: break-all; margin-top: 5px; }
+.spot-owner { font-size: 0.85em; color: #666; margin-top: 3px; } /* Style for owner */
+.spot-entry { font-size: 0.8em; color: #777; margin-top: 3px; }

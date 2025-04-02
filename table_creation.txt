@@ -1,0 +1,89 @@
+CREATE DATABASE parking_db;
+
+\c parking_db
+
+-- Start a transaction
+BEGIN;
+
+-- Table: owners
+-- Stores information about vehicle owners
+CREATE TABLE IF NOT EXISTS owners (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL, -- Owner name is required
+    phone_number VARCHAR(20) UNIQUE NOT NULL -- Phone number must be unique and required
+);
+
+-- Create indexes for faster lookups
+CREATE INDEX IF NOT EXISTS idx_owners_phone_number ON owners (phone_number);
+-- Optional index on name if you search by it often
+-- CREATE INDEX IF NOT EXISTS idx_owners_name ON owners (name);
+
+
+-- Table: vehicles
+-- Stores information about registered vehicles, linked to an owner
+CREATE TABLE IF NOT EXISTS vehicles (
+    id SERIAL PRIMARY KEY,
+    license_plate VARCHAR(20) UNIQUE NOT NULL,
+    qr_code VARCHAR UNIQUE NOT NULL, -- Stores the unique data string from the QR code
+    owner_id INTEGER, -- Foreign key linking to owners table, nullable
+
+    -- Foreign Key Constraint: Link to owners table
+    CONSTRAINT fk_vehicle_owner -- Renamed constraint
+        FOREIGN KEY(owner_id)
+        REFERENCES owners(id)
+        ON DELETE SET NULL -- If an owner is deleted, set vehicle's owner_id to NULL
+);
+
+-- Create indexes for faster lookups
+CREATE INDEX IF NOT EXISTS idx_vehicles_license_plate ON vehicles (license_plate);
+CREATE INDEX IF NOT EXISTS idx_vehicles_qr_code ON vehicles (qr_code);
+CREATE INDEX IF NOT EXISTS idx_vehicles_owner_id ON vehicles (owner_id);
+
+
+-- Table: parking_spots
+-- Stores information about individual parking spots
+CREATE TABLE IF NOT EXISTS parking_spots (
+    id SERIAL PRIMARY KEY,
+    spot_number VARCHAR(10) UNIQUE NOT NULL,
+    is_occupied BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+-- Optional: Index on spot_number (UNIQUE constraint often creates one)
+-- CREATE INDEX IF NOT EXISTS idx_parking_spots_spot_number ON parking_spots (spot_number);
+
+
+-- Table: parking_records
+-- Stores records of vehicles parking in spots (log)
+CREATE TABLE IF NOT EXISTS parking_records (
+    id SERIAL PRIMARY KEY,
+    vehicle_id INTEGER NOT NULL, -- Foreign key linking to vehicles table
+    spot_id INTEGER NOT NULL, -- Foreign key linking to parking_spots table
+    entry_time TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP, -- Timezone-aware timestamp
+    exit_time TIMESTAMPTZ, -- Nullable, timezone-aware
+    fee NUMERIC(10, 2), -- Nullable, for currency
+
+    -- Foreign Key Constraints: Ensure data integrity
+    CONSTRAINT fk_vehicle_record
+        FOREIGN KEY(vehicle_id)
+        REFERENCES vehicles(id)
+        ON DELETE CASCADE, -- If a vehicle is deleted, delete its parking records too
+
+    CONSTRAINT fk_spot_record
+        FOREIGN KEY(spot_id)
+        REFERENCES parking_spots(id)
+        ON DELETE RESTRICT -- Prevent deleting a spot if it has parking records
+);
+
+-- Create indexes for faster lookups on foreign keys and active records
+CREATE INDEX IF NOT EXISTS idx_parking_records_vehicle_id ON parking_records (vehicle_id);
+CREATE INDEX IF NOT EXISTS idx_parking_records_spot_id ON parking_records (spot_id);
+CREATE INDEX IF NOT EXISTS idx_parking_records_active ON parking_records (exit_time) WHERE exit_time IS NULL;
+
+
+-- Commit the transaction
+COMMIT;
+
+
+RUN
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+http://127.0.0.1:8000

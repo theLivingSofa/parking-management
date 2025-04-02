@@ -1,0 +1,43 @@
+# requirements.txt
+
+# Core FastAPI framework
+fastapi
+
+# ASGI server to run FastAPI (includes standard extras like uvloop, httptools)
+uvicorn[standard]
+
+# SQLAlchemy ORM for database interaction
+SQLAlchemy
+
+# PostgreSQL database driver (newer version, includes binary)
+# Use 'psycopg2-binary' if you prefer the older driver
+psycopg[binary]
+
+# For loading variables from .env file
+python-dotenv
+
+# For timezone handling (used in crud.py)
+pytz
+
+# Templating engine used by FastAPI for HTMLResponse
+# Often installed as a dependency of fastapi, but good to specify
+Jinja2
+
+qrcode[pil]
+# Optional: For generating QR codes
+
+psycopg2
+psycopg2-binary
+# Optional: For generating QR codes
+
+# Pydantic is a core dependency of FastAPI, listing it explicitly is optional
+# pydantic
+
+# Optional: For database migrations (highly recommended)
+# alembic
+
+# Optional: For hashing passwords if you add user authentication
+# passlib[bcrypt]
+
+# requirements.txt
+
