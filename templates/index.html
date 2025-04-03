@@ -3,68 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Management System</title>
+    <title>QR Vehicle Status System</title>
     <link rel="stylesheet" href="/static/style.css">
-    </head>
+    <script src="/static/html5-qrcode.min.js" defer></script> <script src="/static/qr-scanner.js" defer></script>
+    <script src="/static/script.js" defer></script>
+</head>
 <body>
 
-    <h1>Parking Management System</h1>
+    <h1>QR Vehicle Status System</h1>
 
-    
-
-    <hr>
-
-    <section class="control-box">
-        <h2>Check-In Vehicle</h2>
-        <div id="checkin-scanner-region" style="width: 300px; margin: 10px auto;"></div>
-        <button id="checkin-scan-btn" onclick="startScanner('checkin')">Scan QR for Check-In</button>
-
-        <div id="checkin-step2" style="display: none; margin-top: 15px;">
-            <p>QR Scanned: <strong id="checkin-qr-data">[QR Data]</strong></p>
-            <div>
-                 <label for="checkin-spot">Enter Spot Number:</label>
-                 <input type="text" id="checkin-spot" placeholder="e.g., A01" required>
-            </div>
-            <button onclick="confirmCheckIn()">Confirm Check-In</button>
-        </div>
-        <div id="checkin-status" class="status"></div>
-    </section>
-
-    <hr>
-
-    <section class="control-box">
-        <h2>Check-Out Vehicle</h2>
-        <div id="checkout-scanner-region" style="width: 300px; margin: 10px auto;"></div>
-        <button id="checkout-scan-btn" onclick="startScanner('checkout')">Scan QR for Check-Out</button>
-
-        <div id="checkout-step2" style="display: none; margin-top: 15px;">
-             <p>QR Scanned: <strong id="checkout-qr-data">[QR Data]</strong></p>
-             <button onclick="confirmCheckOut()">Confirm Check-Out</button>
-         </div>
-         <div id="checkout-status" class="status"></div>
-    </section>
-
-    <hr>
-
-    <section>
-        <h2>Parking Lot Status</h2>
-        <div id="parking-lot" class="parking-lot">
-            <p>Loading parking spots...</p>
-            </div>
-    </section>
-
-    <hr>
-    
     <section class="control-box">
         <h2>Register New Owner</h2>
-        <div>
-            <label for="owner-name">Owner Name:</label>
-            <input type="text" id="owner-name" placeholder="Enter Owner's Name" required>
-        </div>
-        <div>
-            <label for="owner-phone">Phone Number:</label>
-            <input type="text" id="owner-phone" placeholder="Enter Unique Phone Number" required>
-        </div>
+        <div><label for="owner-name">Owner Name:</label><input type="text" id="owner-name" placeholder="Enter Name" required></div>
+        <div><label for="owner-phone">Phone Number:</label><input type="text" id="owner-phone" placeholder="Enter Unique Phone" required></div>
         <button onclick="registerOwner()">Register Owner</button>
         <div id="owner-reg-status" class="status"></div>
     </section>
@@ -73,23 +24,51 @@
 
     <section class="control-box">
         <h2>Register New Vehicle</h2>
-        <div>
-            <label for="reg-plate">License Plate:</label>
-            <input type="text" id="reg-plate" placeholder="Enter License Plate" required>
-        </div>
-        <div>
-            <label for="vehicle-owner-phone">Owner's Phone #:</label>
-            <input type="text" id="vehicle-owner-phone" placeholder="Enter Owner's Registered Phone" required>
-        </div>
+        <div><label for="reg-plate">License Plate:</label><input type="text" id="reg-plate" placeholder="Enter License Plate" required></div>
+        <div><label for="vehicle-owner-phone">Owner's Phone #:</label><input type="text" id="vehicle-owner-phone" placeholder="Owner's Registered Phone" required></div>
         <button onclick="registerVehicle()">Register Vehicle & Get QR</button>
         <div id="reg-status" class="status"></div>
-        <div id="reg-qr-result">
-            </div>
+        <div id="reg-qr-result"></div>
     </section>
 
-    <script src="/static/html5-qrcode.min.js" defer></script>
-    <script src="/static/qr-scanner.js" defer></script>
-    <script src="/static/script.js" defer></script>
+    <hr>
 
-</body>
+    <section class="control-box">
+        <h2>Check Vehicle Status</h2>
+        <div id="status-scanner-region" style="width: 300px; margin: 10px auto;"></div>
+        <button id="status-scan-btn" onclick="startScanner('status')">Scan QR for Status</button>
+        <div id="status-result-display" class="status-display" style="margin-top:15px; text-align:left;">
+            </div>
+        <div id="status-check-status" class="status"></div>
+    </section>
+
+    <hr>
+
+    <section class="control-box">
+        <h2>Check-In Vehicle</h2>
+        <div id="checkin-scanner-region" style="width: 300px; margin: 10px auto;"></div>
+        <button id="checkin-scan-btn" onclick="startScanner('checkin')">Scan QR for Check-In</button>
+        <div id="checkin-step2" style="display: none; margin-top: 15px;">
+            <p>QR Scanned: <strong id="checkin-qr-data">[QR Data]</strong></p>
+            <button onclick="confirmCheckIn()">Confirm Check-In</button>
+        </div>
+         <div id="checkin-status" class="status"></div>
+    </section>
+
+    <hr>
+
+    <section class="control-box">
+        <h2>Check-Out Vehicle</h2>
+        <div id="checkout-scanner-region" style="width: 300px; margin: 10px auto;"></div>
+        <button id="checkout-scan-btn" onclick="startScanner('checkout')">Scan QR for Check-Out</button>
+         <div id="checkout-step2" style="display: none; margin-top: 15px;">
+             <p>QR Scanned: <strong id="checkout-qr-data">[QR Data]</strong></p>
+             <button onclick="confirmCheckOut()">Confirm Check-Out</button>
+         </div>
+        <div id="checkout-status" class="status"></div>
+    </section>
+
+    <hr>
+
+    </body>
 </html>

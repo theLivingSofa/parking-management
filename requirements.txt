@@ -1,5 +1,5 @@
-# requirements.txt - use below code to install
-# pip install -r requirements.txt
+# requirements.txt
+
 # Core FastAPI framework
 fastapi
 
