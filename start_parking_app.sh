@@ -25,7 +25,7 @@ fi
 # Run the Uvicorn server
 # Using host 127.0.0.1 (localhost only) and port 8000
 echo "Launching server on http://127.0.0.1:8000 (Press CTRL+C to stop)"
-uvicorn app.main:app --host 127.0.0.1 --port 8000
+uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 # Optional: Keep the terminal window open after server stops
 echo "-----------------------------------------------------"
