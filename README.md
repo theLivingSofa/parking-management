@@ -1,4 +1,4 @@
-# QR Code Parking Management System
+# QR Code Parking Management System (Offline)
 
 A web-based application for managing parking lot occupancy using QR codes for vehicle check-in and check-out, built with FastAPI and PostgreSQL.
 
