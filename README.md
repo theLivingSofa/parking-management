@@ -45,7 +45,7 @@ This system allows for registering vehicle owners and their vehicles, generating
 
 1.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/theLivingSofa/parking-management.git
+    git clone https://github.com/theLivingSofa/parking-offline.git
     cd parking-management
     ```
 
